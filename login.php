@@ -33,20 +33,91 @@
    </div>
 
  </div> -->
+ <?php
+
+ session_start();
+ $host="localhost";
+ $username="root";
+ $password="";
+ $database="gs_school";
+ $message="";
+ try {
+   $connect=new PDO("mysql:host=$host;dbname=$database", $username, $password);
+   $connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+   
+ // if (isset($_POST["login"])) {
+    if (empty($_POST["username"])|| empty($_POST["passwordd"])) {
+      $message="<p> these field are required";
+    }
+ // }
+ // else
+ // {
+    $query="SELECT * FROM loginn WHERE username=:username AND passwordd =:passwordd";
+    $statement=$connect->prepare($query);
+    $statement->execute(
+      array(
+        'username'=>$_POST["username"],
+        'passwordd'=>$_POST["passwordd"]
+      )
+    );
+    $count=$statement->rowCount();
+    if($count>0)
+    {
+        $_SESSION['username']=$_POST['username'];
+       header("location:accueil.php");
+       
+  }
+ // }
+
+ 
+ } 
+ catch(PDOException $error)
+{
+  $message=$error->getMessage();
+ }
+ ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
  <div class="box">
    <h2>Login</h2>
-   <form action="">
+   <form  method="post" >
      <div class="inputBox">
-       <input type="text" name="" required>
+       <input type="text" name="username" required>
        <label for="">Username</label>
 
      </div>
      <div class="inputBox">
-      <input type="password" name="" required>
+      <input type="password" name="passwordd" required>
       <label for="">password</label>
 
     </div>
-    <input type="submit" value="submit">
+    <input type="submit" name="login" value="login">
    </form>
 
  </div>
