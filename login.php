@@ -1,23 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Material Design Bootstrap</title>
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-  <!-- Bootstrap core CSS -->
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-  <!-- Material Design Bootstrap -->
-  <link href="css/mdb.min.css" rel="stylesheet">
-  <!-- Your custom styles (optional) -->
-  <link href="css/style.css" rel="stylesheet">
-  <link rel="stylesheet" href="login.css">
-</head>
-
-<body>
+<link rel="stylesheet" href="login.css">
+<?php include 'header.php';?>
  <!-- <div class="container">
    <h1 class="text-center">login form</h1>
    <div class="row">
@@ -41,42 +23,54 @@
  $password="";
  $database="gs_school";
  $message="";
- try {
-   $connect=new PDO("mysql:host=$host;dbname=$database", $username, $password);
-   $connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-   
- // if (isset($_POST["login"])) {
-    if (empty($_POST["username"])|| empty($_POST["passwordd"])) {
-      $message="<p> these field are required";
-    }
- // }
- // else
- // {
-    $query="SELECT * FROM loginn WHERE username=:username AND passwordd =:passwordd";
-    $statement=$connect->prepare($query);
-    $statement->execute(
-      array(
-        'username'=>$_POST["username"],
-        'passwordd'=>$_POST["passwordd"]
-      )
-    );
-    $count=$statement->rowCount();
-    if($count>0)
-    {
-        $_SESSION['username']=$_POST['username'];
-       header("location:accueil.php");
-       
-  }
- // }
-
+ if($_POST)
+ { try {
+  $connect=new PDO("mysql:host=$host;dbname=$database", $username, $password);
+  $connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+  
+// if (isset($_POST["login"])) {
+   if (empty($_POST["username"])|| empty($_POST["passwordd"])) {
+     $message="<p> these field are required";
+   }
+// }
+// else
+// {
  
- } 
- catch(PDOException $error)
-{
-  $message=$error->getMessage();
+   $query="SELECT * FROM loginn WHERE username=:username AND passwordd =:passwordd";
+   $statement=$connect->prepare($query);
+   $statement->execute(
+     array(
+       'username'=>$_POST["username"],
+       'passwordd'=>$_POST["passwordd"]
+     )
+   );
+   $count=$statement->rowCount();
+   if($count>0)
+   {
+       $_SESSION['username']=$_POST['username'];
+      header("location:accueil.php");
+      
  }
- ?>
+ else
+ {?>
+  <script>
+  var id=document.getElementById('eoor');
+   id.innerHTML='<div class="alert alert-danger">please entrer right values</div>';
 
+
+</script>
+<?php
+ }
+// }
+
+
+} 
+catch(PDOException $error)
+{
+ $message=$error->getMessage();
+}}
+
+ ?>
 
 
 
@@ -111,6 +105,8 @@
        <input type="text" name="username" required>
        <label for="">Username</label>
 
+     </div>
+     <div  id="eoor">
      </div>
      <div class="inputBox">
       <input type="password" name="passwordd" required>

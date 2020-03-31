@@ -27,12 +27,18 @@ $message="";
             if($count>0)
             {
                 $_SESSION['username']=$_POST['username'];
-                header("location:accueil.php");
+                header("location:livre.php");
             }
             else
-            {
-                $message='please rewrite';
-            }
+            {?>
+                <script>
+                var id=document.getElementById('eoor');
+                 id.innerHTML='<div class="alert alert-danger">please entrer right values</div>';
+  
+
+              </script>
+              
+          <?php  }
    }
    }
   }
