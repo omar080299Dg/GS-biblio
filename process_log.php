@@ -7,7 +7,7 @@ $database="gs_school";
 $message="";
   try  
   {
-      $connection=new PDO("mysql:host:$host;dbname=$database",$username,$password);
+      $connection=new PDO("mysql:host=$host;dbname=$database",$username,$password);
       $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
      if (isset($_POST['login'])) {
           if (empty($_POST['username'] || $_POST['password'])) {

@@ -38,8 +38,10 @@ CREATE TABLE Livre(
         liv_num    Int NOT NULL ,
         liv_titre  Varchar (50) NOT NULL ,
         nom_aut    Varchar (50) NOT NULL ,
-        prenom_aut Varchar (50) NOT NULL
-	,CONSTRAINT Livre_PK PRIMARY KEY (liv_num)
+        prenom_aut Varchar (50) NOT NULL,
+        lien_image varchar(50),
+        quantite int,
+	CONSTRAINT Livre_PK PRIMARY KEY (liv_num)
 
 	,CONSTRAINT Livre_Auteur_FK FOREIGN KEY (nom_aut,prenom_aut) REFERENCES Auteur(nom_aut,prenom_aut)
 )ENGINE=InnoDB;
