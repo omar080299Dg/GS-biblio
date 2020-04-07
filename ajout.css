@@ -1,0 +1,18 @@
+ body
+ {
+     /* background: url("img/book-1950451_1920.jpg");
+     background-size: cover; */
+     background-color: darkslategrey;
+ }
+ label
+ {
+     color: white;
+ }
+ #cat
+ {
+     margin-top: 20px;
+ }
+#buut
+{
+    margin-top: 20px;
+}

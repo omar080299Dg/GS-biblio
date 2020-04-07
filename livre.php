@@ -16,9 +16,20 @@ try {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link rel="stylesheet" href="omar.css">   
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Material Design Bootstrap</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+  <!-- Bootstrap core CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="css/mdb.min.css" rel="stylesheet">
+  <!-- Your custom styles (optional) -->
+  <link href="css/style.css" rel="stylesheet">
+<link rel="stylesheet" href="omar.css"> 
+     <link rel="stylesheet" href="omar.css"> 
     <title>Document</title>
 </head>
 <body >
@@ -38,15 +49,22 @@ $reponse=$bdd->query("SELECT * FROM livre");
             <div>
                 <h3><?php echo $donnee['liv_titre'];?>
             </h3>
-               
-                <p><strong> Auteur</strong> :<?php echo $donnee['nom_aut']." ". $donnee['prenom_aut']."<br>Quantite Disponible :". $donnee['quantite']."<br>";?> 
+               <?php if($donnee['quantite']>=5){?>
+                <p><strong> Auteur</strong> :<?php echo $donnee['nom_aut']." ". $donnee['prenom_aut']."<br>Quantite Disponible : <a href='#' class='btn btn-success btn-sm delete'>".$donnee['quantite']."</a><br>";?> 
                
                 
                 
                 </p>
+               <?php }
+               else
+               {?>
+                <p><strong> Auteur</strong> :<?php echo $donnee['nom_aut']." ". $donnee['prenom_aut']."<br>Quantite Disponible : <a href='#' class='btn btn-danger btn-sm delete'>".$donnee['quantite']."</a><br>";?>
+                    
+
+              <?php } ?>
               
             </div>
-
+>
         </div>
 
     </div>
@@ -69,7 +87,13 @@ $image = $req->fetch();
  -->
 
 
-
+ <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="js/popper.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="js/mdb.min.js"></script>
  
 </body>
 </html>

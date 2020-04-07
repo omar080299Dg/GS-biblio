@@ -2,6 +2,12 @@
   
 <link rel="stylesheet" href="accueil.css">
 <div class="container">
+ 
+</div class="bar">
+   <h1> GS-Biblio</h1>
+</div>
+</div>
+<div class="container">
 <table>
     <tr>
         <td>

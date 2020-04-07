@@ -1,18 +1,16 @@
-*
+ *
 {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-body
-{
-    background-color: rgb(53, 50, 50);
-}
-.container
-{
-    
-}
+ 
+ 
 .card
 {
     margin: 50px;
+}  
+.container .bar h1
+{
+    color: red;
 }

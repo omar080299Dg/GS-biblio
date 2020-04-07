@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="login.css">
+<script src="livre.js"></script>
 <?php include 'header.php';?>
  <!-- <div class="container">
    <h1 class="text-center">login form</h1>
@@ -15,6 +16,27 @@
    </div>
 
  </div> -->
+ 
+ <div class="box">
+   <h2>Login</h2>
+   <form  method="post" >
+     <div class="inputBox">
+       <input type="text" name="username" required>
+       <label for="">Username</label>
+
+     </div>
+     <div  id="eoor">
+     </div>
+     <div class="inputBox">
+      <input type="password" name="passwordd" required>
+      <label for="">password</label>
+
+    </div>
+    <input type="submit" name="login" value="login">
+   </form>
+
+ </div>
+  
  <?php
 
  session_start();
@@ -55,7 +77,20 @@
  {?>
   <script>
   var id=document.getElementById('eoor');
-   id.innerHTML='<div class="alert alert-danger">please entrer right values</div>';
+  var doc= document.createElement('div');
+  doc.className='alert-danger';
+  doc.style='background-color: red; color: white';
+  var test = document.createTextNode('please entrer right values          ');
+  doc.appendChild(test);
+  var ico= document.createElement('i');
+  
+  ico.className='far fa-times-circle';
+  doc.appendChild(ico);
+  
+  id.appendChild(doc);
+  setTimeout(()=>id.remove(),3000)
+  // id.innerHTML="<div class='alert alert-danger'>please entrer right values</div>";
+  //<i class="far fa-times-circle"></i>
 
 
 </script>
@@ -98,26 +133,6 @@ catch(PDOException $error)
 
 
 
- <div class="box">
-   <h2>Login</h2>
-   <form  method="post" >
-     <div class="inputBox">
-       <input type="text" name="username" required>
-       <label for="">Username</label>
-
-     </div>
-     <div  id="eoor">
-     </div>
-     <div class="inputBox">
-      <input type="password" name="passwordd" required>
-      <label for="">password</label>
-
-    </div>
-    <input type="submit" name="login" value="login">
-   </form>
-
- </div>
-  
 
 
 
