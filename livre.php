@@ -33,7 +33,13 @@ try {
     <title>Document</title>
 </head>
 <body >
-
+<style>
+  body
+ {
+     background: url(' img/abstract-682549_1920.jpg');
+    /* background-size: cover */
+ }
+</style>
 
 <div class="container">
 <?php

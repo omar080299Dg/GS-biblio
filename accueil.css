@@ -5,12 +5,7 @@
     box-sizing: border-box;
 }
  
- 
-.card
-{
-    margin: 50px;
-}  
-.container .bar h1
-{
-    color: red;
-}
+ body
+ {
+     background: url(' img/abstract-682549_1920.jpg');
+ }

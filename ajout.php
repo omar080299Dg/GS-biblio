@@ -14,6 +14,13 @@ try {
 ?>
 <link rel="stylesheet" href="ajout.css">
 <body  >
+    <style>
+        body
+ {
+     background: url(' img/abstract-682549_1920.jpg');
+    /* background-size: cover */
+ }
+    </style>
     <div class="container">
         <div class="bar">
             <h1 class="display-4 text-center"><i class="fas fa-book-open text-primary">
@@ -25,8 +32,7 @@ try {
     </div>
     
     <div class="container">
-        <form action="" method="POST" enctype="multipart/form-data
-        ">
+        <form action="" method="POST" enctype="multipart/form-data">
             <div class="form group">
                 <label for="id">identifiant</label>
                 <input type="number" id="id" class="form-control" name="id">
@@ -61,12 +67,12 @@ try {
                   <option value="POESIE">POESIE</option>
                   <option value="CONTES">CONTES</option>
                 </select>
-            </div>
-            <!-- <div class="form group">
+            
+              <div class="form group">
                 <label for="img">image</label>
-                <input type="text" id="img" class="form-control" name="file">
+                <input type="file" id="img" class="form-control" name="userfile">
 
-            </div> -->
+            
             <div class=" " id="buut">
                 <input type="submit" type="button" value="Save" name="submit"  class="btn btn-primary">
             <input type="reset" type="button" value="Reset" name="submit"  class="btn btn-warning">
@@ -76,6 +82,12 @@ try {
         </form>
 
     </div>
+ /
+
+
+
+
+
 
 <?php
 if($_POST)
@@ -91,45 +103,13 @@ if($_POST)
  
 ));
 }
-
-
-
-
-
-
-// if(isset($_POST['btn-add']))
-// 	{
-// 		$name=$_POST['user_name'];
-
-// 		$images=$_FILES['profile']['name'];
-// 		$tmp_dir=$_FILES['profile']['tmp_name'];
-// 		$imageSize=$_FILES['profile']['size'];
-
-// 		$upload_dir='upload/';
-// 		$imgExt=strtolower(pathinfo($images,PATHINFO_EXTENSION));
-// 		$valid_extensions=array('jpeg', 'jpg', 'png', 'gif', 'pdf');
-// 		$picProfile=rand(1000, 1000000).".".$imgExt;
-//         move_uploaded_file($tmp_dir, $upload_dir.$picProfile);}
-        
-	 
-
+ 
 if( $_POST )
 
 {
-    
-		// $images=$_FILES['file']['name'];
-		// $tmp_dir=$_FILES['file']['tmp_name'];
-		// $imageSize=$_FILES['file']['size'];
-
-		// $upload_dir='upload/';
-		// $imgExt=strtolower(pathinfo($images,PATHINFO_EXTENSION));
-		// $valid_extensions=array('jpeg', 'jpg', 'png', 'gif', 'pdf');
-		// $picProfile=rand(1000, 1000000).".".$imgExt;
-        // move_uploaded_file($tmp_dir, $upload_dir.$picProfile);
-        
-
-
-
+    $uploaddir = "upload/";
+    $uploadfile = $uploaddir . basename($_FILES['userfile']['name']);
+    move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile);
     $sql= $bdd->prepare('INSERT INTO livre(liv_num,liv_titre,nom_aut,prenom_aut,lien_image, quantite,categorie)
     VALUES(:liv_num,:liv_titre,:nom_aut,:prenom_aut,:lien_image, :quantite,:categorie)');
     $sql->execute(array( 
@@ -137,7 +117,7 @@ if( $_POST )
     'liv_titre'=>$_POST['titre'],
     'nom_aut'=>$_POST['nom'],
     'prenom_aut'=>$_POST['prenom'],
-    'lien_image'=>"upload/".$_POST['titre'].".jpg",
+    'lien_image'=>"upload/". $_FILES['userfile']['name'],
     'quantite'=>$_POST['quantite'],
     'categorie'=>$_POST['categorie']
    
@@ -145,9 +125,9 @@ if( $_POST )
 ));
 }
 ?>
- <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width:40%">
+ <!-- <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width:40%">
       40% Complete (success)
-    </div>
+    </div> -->
 
     <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
     <!-- Bootstrap tooltips -->

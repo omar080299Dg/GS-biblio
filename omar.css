@@ -12,7 +12,7 @@ body
     display:flex;
     justify-content: center;
     align-items: center;
-    background-color: darkslategrey;
+    background-color: rgb(150, 28, 28);
     min-height: 100hv;
 
 
