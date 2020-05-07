@@ -1,12 +1,12 @@
 <?php include 'header.php';
-$username="root";
-$password="";
-$database="gs_school";
-$host="localhost";
+$username = "root";
+$password = "";
+$database = "gs_school";
+$host = "localhost";
 try {
-    $bdd=new PDO("mysql:host=$host;dbname=$database",$username,$password);
+    $bdd = new PDO("mysql:host=$host;dbname=$database", $username, $password);
     $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-     
+
 } catch (Exception $e) {
     echo $e->getMessage();
 }
@@ -26,11 +26,11 @@ try {
             <h1 class="display-4 text-center"><i class="fas fa-book-open text-primary">
             </i>   <span class="text-primary">GS- </span>Biblio</h1>
             <h3  class="display-6 text-center"> Ajout de livre</h3>
-    
+
         </div>
 
     </div>
-    
+
     <div class="container">
         <form action="" method="POST" enctype="multipart/form-data">
             <div class="form group">
@@ -67,12 +67,12 @@ try {
                   <option value="POESIE">POESIE</option>
                   <option value="CONTES">CONTES</option>
                 </select>
-            
+
               <div class="form group">
                 <label for="img">image</label>
                 <input type="file" id="img" class="form-control" name="userfile">
 
-            
+
             <div class=" " id="buut">
                 <input type="submit" type="button" value="Save" name="submit"  class="btn btn-primary">
             <input type="reset" type="button" value="Reset" name="submit"  class="btn btn-warning">
@@ -82,7 +82,7 @@ try {
         </form>
 
     </div>
- /
+
 
 
 
@@ -90,40 +90,70 @@ try {
 
 
 <?php
-if($_POST)
-{
-    $sql= $bdd->prepare('INSERT INTO auteur ( nom_aut,prenom_aut )
-    VALUES( :nom_aut,:prenom_aut )');
-    $sql->execute(array( 
-    
-    'nom_aut'=>$_POST['nom'],
-    'prenom_aut'=>$_POST['prenom']
-     
-   
+if ($_POST) {
+    $query="SELECT * FROM livre WHERE liv_num=:id";
+    $statement=$bdd->prepare($query);
+    $statement->execute(
+      array(
+        'id'=>$_POST["id"]
+        
+      )
+    );
+    $count=$statement->rowCount();
+    if($count>0){ 
+        $don=$statement->fetch();
+    $qt=$don['quantite'];
+            
+    $req = $bdd->prepare('UPDATE livre SET quantite = :quantite  WHERE liv_num = :id');
+    $req->execute(array(
+        'id'=>$_POST["id"],
+        'quantite'=>$_POST['quantite'] +$qt
+	));
  
-));
-}
- 
-if( $_POST )
+    }
+  else
+  {
 
-{
+    $sql = $bdd->prepare('INSERT INTO auteur ( nom_aut,prenom_aut )
+    VALUES( :nom_aut,:prenom_aut )');
+    $sql->execute(array(
+
+        'nom_aut' => $_POST['nom'],
+        'prenom_aut' => $_POST['prenom'],
+    ));
+
     $uploaddir = "upload/";
     $uploadfile = $uploaddir . basename($_FILES['userfile']['name']);
     move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile);
-    $sql= $bdd->prepare('INSERT INTO livre(liv_num,liv_titre,nom_aut,prenom_aut,lien_image, quantite,categorie)
+    $sql = $bdd->prepare('INSERT INTO livre(liv_num,liv_titre,nom_aut,prenom_aut,lien_image, quantite,categorie)
     VALUES(:liv_num,:liv_titre,:nom_aut,:prenom_aut,:lien_image, :quantite,:categorie)');
-    $sql->execute(array( 
-    'liv_num'=>$_POST['id'],
-    'liv_titre'=>$_POST['titre'],
-    'nom_aut'=>$_POST['nom'],
-    'prenom_aut'=>$_POST['prenom'],
-    'lien_image'=>"upload/". $_FILES['userfile']['name'],
-    'quantite'=>$_POST['quantite'],
-    'categorie'=>$_POST['categorie']
+    $sql->execute(array(
+        'liv_num' => $_POST['id'],
+        'liv_titre' => $_POST['titre'],
+        'nom_aut' => $_POST['nom'],
+        'prenom_aut' => $_POST['prenom'],
+        'lien_image' => "upload/" . $_FILES['userfile']['name'],
+        'quantite' => $_POST['quantite'],
+        'categorie' => $_POST['categorie'],
+
+    ));
+  }
+
+
+
+
+
+
+
+
+
+
+
+
    
+   }
  
-));
-}
+ 
 ?>
  <!-- <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width:40%">
       40% Complete (success)

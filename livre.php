@@ -13,6 +13,33 @@ try {
     echo $e->getMessage();
 }
  ?>
+
+<?php 
+   function supprimer()
+   {
+    $username="root";
+    $password="";
+    $database="gs_school";
+    $host="localhost";
+    try {
+    
+        $bdd=new PDO("mysql:host=$host;dbname=$database",$username,$password);
+        $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+       if(isset($_GET['liv_num']))
+       {
+        $liv_id=$_GET['liv_num'];
+        $sql= $bdd->exec("DELETE  FROM livre WHERE liv_num=$liv_id");
+        header("location:livre.php"); 
+       }
+         
+    } catch (Exception $e) {
+        echo $e->getMessage();
+    }
+   
+   }
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -57,7 +84,7 @@ $reponse=$bdd->query("SELECT * FROM livre");
             </h3>
                <?php if($donnee['quantite']>=5){?>
                 <p><strong> Auteur</strong> :<?php echo $donnee['nom_aut']." ". $donnee['prenom_aut']."<br>Quantite Disponible : <a href='#' class='btn btn-success btn-sm delete'>".$donnee['quantite']."</a><br>";?> 
-               
+                <a  type="button" class="btn btn-danger"   onclick="<?php supprimer(); ?>" href="livre.php?liv_num= <?php echo($donnee['liv_num']) ?>"><span class="gliphy"></span>supprimer</a> 
                 
                 
                 </p>
@@ -65,7 +92,7 @@ $reponse=$bdd->query("SELECT * FROM livre");
                else
                {?>
                 <p><strong> Auteur</strong> :<?php echo $donnee['nom_aut']." ". $donnee['prenom_aut']."<br>Quantite Disponible : <a href='#' class='btn btn-danger btn-sm delete'>".$donnee['quantite']."</a><br>";?>
-                    
+                <a  type="button" class="btn btn-danger"   onclick="<?php supprimer(); ?>" href="livre.php?liv_num= <?php echo($donnee['liv_num']) ?>"><span class="gliphy"></span>supprimer</a> 
 
               <?php } ?>
               

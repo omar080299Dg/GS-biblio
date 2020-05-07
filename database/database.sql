@@ -8,13 +8,13 @@
 #------------------------------------------------------------
 
 CREATE TABLE Adherant(
-        adh_num    Varchar (50) NOT NULL ,
+        adh_num    Varchar (50) NOT NULL 
         adh_nom    Varchar (50) NOT NULL ,
         adh_prenom Varchar (50) NOT NULL ,
         adh_cp     Varchar (50) NOT NULL ,
         adh_ville  Varchar (50) NOT NULL ,
         adh_rue    Varchar (50) NOT NULL ,
-        adh_nb_emp Int NOT NULL
+      
 	,CONSTRAINT Adherant_PK PRIMARY KEY (adh_num)
 )ENGINE=InnoDB;
 
@@ -54,9 +54,10 @@ CREATE TABLE Livre(
 CREATE TABLE emprunter(
         liv_num     Int NOT NULL ,
         adh_num     Varchar (50) NOT NULL ,
-        date_emprun Date NOT NULL ,
-        date_rendu  Date NOT NULL ,
-        delai       Date NOT NULL
+        date_emprun DATETIME NOT NULL ,
+        date_rendu  DATETIME NOT NULL ,
+        delai       DATETIME NOT NULL,
+        adh_nb_emp Int DEFAULT 2
 	,CONSTRAINT emprunter_PK PRIMARY KEY (liv_num,adh_num)
 
 	,CONSTRAINT emprunter_Livre_FK FOREIGN KEY (liv_num) REFERENCES Livre(liv_num)
