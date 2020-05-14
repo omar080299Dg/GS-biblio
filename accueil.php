@@ -1,6 +1,6 @@
  <?php include 'header.php'?>
   
-<link rel="stylesheet" href="accueil.css">
+
 <style>
 
 *

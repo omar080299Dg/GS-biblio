@@ -70,7 +70,7 @@
    if($count>0)
    {
        $_SESSION['username']=$_POST['username'];
-      header("location:accueil.php");
+      header("location:accueilact.php");
       
  }
  else

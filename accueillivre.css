@@ -1,0 +1,170 @@
+@import url(https://fonts.googleapis.com/css?family=Rubik);
+*
+{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body
+{
+  font-family: 'Rubik';
+}
+header
+{
+    height: 5rem;
+    background-color:#2f2f2f ;
+    font-size: 1.5rem;
+    color: white;
+    
+}
+header p
+{
+
+    float: right;
+    margin: 1rem;
+    background-color: #fa344b;
+    padding: 0.5rem;
+    width: 10rem;
+    border-radius: 7px;
+    text-align: center;
+    transition: all .5s ease;
+}
+header p a
+{
+    text-decoration: none;
+    text-transform: none;
+    color: #011627;
+}
+ 
+header p:hover 
+{
+    background-color: #2f2f2f;
+    color:#fa344b ;
+}
+header p a:hover 
+{
+    color:#fa344b ;
+}
+.container
+{
+    background: url('img/5158.jpg') 0 -100px;
+    background-size: cover;
+    height: 100vh;
+     
+}
+span
+{
+    font-size: 1.5rem;
+    margin-left: 1rem;
+    font-style: italic;
+    color: #fa344b ;
+    
+    
+}
+.fa-book-open
+{
+    font-size: 3rem;
+    color:  #fa344b ;
+    margin-top: 1rem;
+  
+}
+.fa-sign-out-alt
+{
+    padding: 3px;
+}
+.content
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.titre
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem;
+    width: 35rem;
+    padding: 2rem;
+}
+.titre p
+{
+    font-size: 1.5rem;
+    font-family: 'Rubik';
+    text-align: center;
+    color: white;
+    
+    
+}
+.ajout
+{
+    margin-right: 3rem;
+    
+}
+.fa-plus-square
+{
+    margin-bottom: 1rem;
+}
+.pink
+{
+    color: black;
+}
+.btn-add
+{
+    background-color: #2f2f2f;
+    padding: 0.5rem;
+    width: 100%;
+    border-radius: 5px;
+    text-align: center;
+    transition: all .5s ease;
+    margin-top: 1.5rem;
+    color: #fa344b;
+    text-decoration: none;
+    text-transform: none;
+    margin-left: 1.5rem;
+}
+.btn-add:hover
+{
+    color: #2f2f2f ;
+    background-color: #fa344b;
+}
+.contain-sec
+{
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+     
+   
+}
+.sec-1
+{ 
+    background-color: #2f2f2f;
+}
+.cards
+{
+    display: flex;
+}
+.card-1
+{
+    width: 500px;
+    padding: 2rem;
+    
+}
+.card-1 div
+{
+  
+    background-color: #fa344b;
+    height: 3rem;
+   text-align: center;
+   
+  
+   font-size: 2rem;
+   font-family: 'Rubik';
+}
+.card-1 div a
+{
+   margin-top: 1rem;
+   text-decoration: none;
+   text-transform: none;
+   color: #2f2f2f;
+}

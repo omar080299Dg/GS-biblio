@@ -1,42 +1,41 @@
 
 <?php
 
-$username="root";
-$password="";
-$database="gs_school";
-$host="localhost";
+$username = "root";
+$password = "";
+$database = "gs_school";
+$host = "localhost";
 try {
-    $bdd=new PDO("mysql:host=$host;dbname=$database",$username,$password);
+    $bdd = new PDO("mysql:host=$host;dbname=$database", $username, $password);
     $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-     
+
 } catch (Exception $e) {
     echo $e->getMessage();
 }
- ?>
+?>
 
-<?php 
-   function supprimer()
-   {
-    $username="root";
-    $password="";
-    $database="gs_school";
-    $host="localhost";
+<?php
+function supprimer()
+{
+    $username = "root";
+    $password = "";
+    $database = "gs_school";
+    $host = "localhost";
     try {
-    
-        $bdd=new PDO("mysql:host=$host;dbname=$database",$username,$password);
+
+        $bdd = new PDO("mysql:host=$host;dbname=$database", $username, $password);
         $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-       if(isset($_GET['liv_num']))
-       {
-        $liv_id=$_GET['liv_num'];
-        $sql= $bdd->exec("DELETE  FROM livre WHERE liv_num=$liv_id");
-        header("location:livre.php"); 
-       }
-         
+        if (isset($_GET['liv_num'])) {
+            $liv_id = $_GET['liv_num'];
+            $sql = $bdd->exec("DELETE  FROM livre WHERE liv_num=$liv_id");
+            header("location:livre.php");
+        }
+
     } catch (Exception $e) {
         echo $e->getMessage();
     }
-   
-   }
+
+}
 ?>
 
 
@@ -55,8 +54,8 @@ try {
   <link href="css/mdb.min.css" rel="stylesheet">
   <!-- Your custom styles (optional) -->
   <link href="css/style.css" rel="stylesheet">
-<link rel="stylesheet" href="omar.css"> 
-     <link rel="stylesheet" href="omar.css"> 
+<link rel="stylesheet" href="omar.css">
+     <link rel="stylesheet" href="omar.css">
     <title>Document</title>
 </head>
 <body >
@@ -70,52 +69,50 @@ try {
 
 <div class="container">
 <?php
-$reponse=$bdd->query("SELECT * FROM livre");
-  while( $donnee=$reponse->fetch())
-{?>
+$cat = $_GET['categorie'];
+$reponse = $bdd->query("SELECT * FROM livre WHERE categorie=$cat");
+while ($donnee = $reponse->fetch()) {?>
     <div class="card">
-        <div class="img" data-text="<?php echo $donnee['liv_titre'];?>">
+        <div class="img" data-text="<?php echo $donnee['liv_titre']; ?>">
             <img src="<?php echo $donnee['lien_image']; ?>"   alt="" >
 
         </div>
         <div class="content">
             <div>
-                <h3><?php echo $donnee['liv_titre'];?>
+                <h3><?php echo $donnee['liv_titre']; ?>
             </h3>
-               <?php if($donnee['quantite']>=5){?>
-                <p><strong> Auteur</strong> :<?php echo $donnee['nom_aut']." ". $donnee['prenom_aut']."<br>Quantite Disponible : <a href='#' class='btn btn-success btn-sm delete'>".$donnee['quantite']."</a><br>";?> 
-                <a  type="button" class="btn btn-danger"   onclick="<?php supprimer(); ?>" href="livre.php?liv_num= <?php echo($donnee['liv_num']) ?>"><span class="gliphy"></span>supprimer</a> 
-                
-                
-                </p>
-               <?php }
-               else
-               {?>
-                <p><strong> Auteur</strong> :<?php echo $donnee['nom_aut']." ". $donnee['prenom_aut']."<br>Quantite Disponible : <a href='#' class='btn btn-danger btn-sm delete'>".$donnee['quantite']."</a><br>";?>
-                <a  type="button" class="btn btn-danger"   onclick="<?php supprimer(); ?>" href="livre.php?liv_num= <?php echo($donnee['liv_num']) ?>"><span class="gliphy"></span>supprimer</a> 
+               <?php if ($donnee['quantite'] >= 5) {?>
+                <p><strong> Auteur</strong> :<?php echo $donnee['nom_aut'] . " " . $donnee['prenom_aut'] . "<br>Quantite Disponible : <a href='#' class='btn btn-success btn-sm delete'>" . $donnee['quantite'] . "</a><br>"; ?>
+                <a  type="button" class="btn btn-danger"   onclick="<?php supprimer();?>" href="livre.php?liv_num= <?php echo ($donnee['liv_num']) ?>"><span class="gliphy"></span>supprimer</a>
 
-              <?php } ?>
-              
+
+                </p>
+               <?php } else {?>
+                <p><strong> Auteur</strong> :<?php echo $donnee['nom_aut'] . " " . $donnee['prenom_aut'] . "<br>Quantite Disponible : <a href='#' class='btn btn-danger btn-sm delete'>" . $donnee['quantite'] . "</a><br>"; ?>
+                <a  type="button" class="btn btn-danger"   onclick="<?php supprimer();?>" href="livre.php?liv_num= <?php echo ($donnee['liv_num']) ?>"><span class="gliphy"></span>supprimer</a>
+
+              <?php }?>
+
             </div>
 >
         </div>
 
     </div>
-<?php  }?>
-  
-    
+<?php }?>
+
+
 </div>
 
 
 
 <!-- //Connection a la base de données
- 
+
 $req = $bdd->query(SELECT * FROM TA TABLE);
- 
+
 //Dans ta table tu a mis le lien de l'image ( ex : Images/Mon_image.jp )
- 
+
 $image = $req->fetch();
- 
+
 <img src = "</?php echo $image['nom de ta colonne'] ?>" alt = ""/>
  -->
 
@@ -127,6 +124,6 @@ $image = $req->fetch();
   <script type="text/javascript" src="js/bootstrap.min.js"></script>
   <!-- MDB core JavaScript -->
   <script type="text/javascript" src="js/mdb.min.js"></script>
- 
+
 </body>
 </html>

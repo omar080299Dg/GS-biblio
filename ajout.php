@@ -63,9 +63,11 @@ try {
 
                 <select id="categorie" name="categorie">
                   <option value="ROMAN">ROMAN</option>
-                  <option value="THEATRE">THEATRE</option>
+                  <option value="HISTOIRE">HISTOIRE</option>
                   <option value="POESIE">POESIE</option>
                   <option value="CONTES">CONTES</option>
+                  <option value="GEOGRAPHIE">GEOGRAPHIE</option>
+                  <option value="SCIENCE">SCIENCE</option>
                 </select>
 
               <div class="form group">

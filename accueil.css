@@ -1,11 +1,100 @@
- *
+@import url(https://fonts.googleapis.com/css?family=Rubik);
+*
 {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    
+}
+body
+{
+  
+    font-family: 'Rubik';
+}
+header
+{
+    background-color: rgb(24, 23, 23);
+    min-height:5rem;
+    color: white;
+    padding: 1rem;
+}
+header p
+{
+    float: right;
+    margin-right: 2rem;
+    background-color: rgb(255, 217, 0);
+    padding: 0.5rem;
+    width: 10rem;
+    border-radius: 7px;
+    text-align: center;
+    transition: all .5s ease;
+}
+.fa-book-open
+{
+    font-size: 3rem;
+    color: rgb(255, 217, 0) ;
+}
+header p a
+{
+    text-decoration: none;
+    text-transform: none;
+    color: rgb(0, 0, 0);
+    font-size: 1.5rem;
+}
+header p a:hover
+{
+    color: white;
+}
+header p:hover
+{
+    background-color: black;
+    color:  white; 
+    box-shadow: 0 0 20px black;
+}
+span
+{
+    font-size: 1.5rem;
+    margin-left: 1rem;
+    font-style: italic;
+    color:rgb(255, 217, 0) ;
+}
+.fa-sign-out-alt
+{
+    padding: 3px;
+}
+.container
+{
+    background: url('img/2744059.jpg');
+    background-size: cover;
+    height: 88.5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+}
+.container a
+{
+    text-decoration: none;
+    height: 5rem;
+    font-size: 2rem;
+
+    padding: 1rem;
+    margin: 2rem;
+    border-radius: 20px;
+   
+    transition: all .5s ease;
+
+
+    
+    background-color:  rgb(255, 217, 0);
+    color: black;
+  
+}
+.container a:hover
+{
+    color: white;
+    background-color: black;
+      box-shadow: 0 0 20px black;
 }
  
- body
- {
-     background: url(' img/abstract-682549_1920.jpg');
- }
+ 
