@@ -1,8 +1,81 @@
+@import url(https://fonts.googleapis.com/css?family=Rubik);
+*
+{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body
+{
+  font-family: 'Rubik';
+}
+header
+{
+    height: 5rem;
+    background-color:#2f2f2f ;
+    font-size: 1.5rem;
+    color: white;
+    
+}
+header p
+{
+
+    float: right;
+    margin: 1rem;
+    background-color: #fa344b;
+    padding: 0.5rem;
+    width: 10rem;
+    border-radius: 7px;
+    text-align: center;
+    transition: all .5s ease;
+}
+header p a
+{
+    text-decoration: none;
+    text-transform: none;
+    color: #011627;
+}
+ 
+header p:hover 
+{
+    background-color: #2f2f2f;
+    color:#fa344b ;
+}
+header p a:hover 
+{
+    color:#fa344b ;
+}
+ 
+span
+{
+    font-size: 1.5rem;
+    margin-left: 1rem;
+    font-style: italic;
+    color: #fa344b ;
+    
+    
+}
+label
+{
+    color: black;
+}
+.fa-book-open
+{
+    font-size: 3rem;
+    color:  #fa344b ;
+    margin-top: 1rem;
+  
+}
+.fa-sign-out-alt
+{
+    padding: 3px;
+}
  body
  {
      /* background: url("img/book-1950451_1920.jpg");
      background-size: cover; */
      background-color: darkslategrey;
+     background-image: url("img/literature-3068940_1280.jpg");
  }
  label
  {
@@ -15,4 +88,8 @@
 #buut
 {
     margin-top: 20px;
+}
+.form-control
+{
+    width: 25rem;
 }

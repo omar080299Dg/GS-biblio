@@ -14,22 +14,12 @@ try {
 ?>
 <link rel="stylesheet" href="ajout.css">
 <body  >
-    <style>
-        body
- {
-     background: url(' img/abstract-682549_1920.jpg');
-    /* background-size: cover */
- }
-    </style>
-    <div class="container">
-        <div class="bar">
-            <h1 class="display-4 text-center"><i class="fas fa-book-open text-primary">
-            </i>   <span class="text-primary">GS- </span>Biblio</h1>
-            <h3  class="display-6 text-center"> Ajout de livre</h3>
-
-        </div>
-
-    </div>
+ 
+<header>
+ <i class="fas fa-book-open text-primary">
+  </i>  <span> Gs_biblio</span>
+    <p><a href="logout.php" class="logout"><i class="fas fa-sign-out-alt"></i>logout</a></p>
+</header>
 
     <div class="container">
         <form action="" method="POST" enctype="multipart/form-data">

@@ -99,6 +99,7 @@ span
 .ajout
 {
     margin-right: 3rem;
+    margin-top: 2rem;
     
 }
 .fa-plus-square
@@ -106,6 +107,10 @@ span
     margin-bottom: 1rem;
 }
 .pink
+{
+    color: black;
+}
+.ajout i
 {
     color: black;
 }

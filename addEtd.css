@@ -1,0 +1,52 @@
+@import url(https://fonts.googleapis.com/css?family=Rubik);
+*
+{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body
+{
+  font-family: 'Rubik';
+}
+header
+{
+    height: 5rem;
+    background-color:#2f2f2f ;
+    font-size: 1.5rem;
+    color: white;
+    
+}
+header p
+{
+
+    float: right;
+    margin: 1rem;
+    background-color: #fa344b;
+    padding: 0.5rem;
+    width: 10rem;
+    border-radius: 7px;
+    text-align: center;
+    transition: all .5s ease;
+}
+header p a
+{
+    text-decoration: none;
+    text-transform: none;
+    color: #011627;
+}
+ 
+header p:hover 
+{
+    background-color: #2f2f2f;
+    color:#fa344b ;
+}
+header p a:hover 
+{
+    color:#fa344b ;
+}
+body
+{
+    background-image: url("img/342407-PA9PYX-915.jpg");
+    background-size: cover;
+}

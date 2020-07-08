@@ -1,3 +1,9 @@
+<link rel="stylesheet" href="addEtd.css">
+<header>
+ <i class="fas fa-book-open text-primary">
+  </i>  <span> Gs_biblio</span>
+    <p><a href="logout.php" class="logout"><i class="fas fa-sign-out-alt"></i>logout</a></p>
+</header>
 <?php
 require 'header.php';
 $username = "root";

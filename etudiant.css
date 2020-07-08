@@ -1,0 +1,99 @@
+@import url(https://fonts.googleapis.com/css?family=Rubik);
+*
+{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body
+{
+  font-family: 'Rubik';
+}
+header
+{
+    height: 5rem;
+    background-color:#2f2f2f ;
+    font-size: 1.5rem;
+    color: white;
+    
+}
+header p
+{
+
+    float: right;
+    margin: 1rem;
+    background-color: #7e3b32;
+    padding: 0.5rem;
+    width: 10rem;
+    border-radius: 7px;
+    text-align: center;
+    transition: all .5s ease;
+}
+header p a
+{
+    text-decoration: none;
+    text-transform: none;
+    color: white;
+}
+ 
+header p:hover 
+{
+    background-color: #2f2f2f;
+    color: #7e3b32 ;
+}
+header p a:hover 
+{
+    color: #7e3b32 ;
+}
+body
+{
+    background-image: url("img/prague-980732_1920.jpg");
+    min-height: 100vh;
+    font-size: 2rem;
+   
+}
+.action
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10rem;
+}
+a
+{
+    text-decoration: none;
+    text-transform: none;
+}
+.action .ajout
+{
+    background-color: #7e3b32;
+    margin: 0 2rem;
+    padding: 1rem;
+    border-radius: 15px;
+    text-align: center;
+}
+.action .ajout:hover
+{
+    background-color:black;
+    color: #7e3b32;
+}
+.action .ajout i
+{
+    font-size: 12rem;
+    color: black;
+   
+}
+.action .ajout i:hover
+{
+    color: #7e3b32;
+}
+ 
+.action .ajout p
+{
+    background-color: #000000;
+    color: #7e3b32;
+    padding: 0.5rem;
+    margin-top: 1rem;
+    border-radius: 15px;
+}
+ 

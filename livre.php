@@ -127,3 +127,20 @@ $image = $req->fetch();
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+<?php if ($user->statut == "medecin"): ?>
+                        <div class="col-xl-3 col-lg-3 d-none d-lg-block">
+                            <div class="Appointment">
+                                <div class="book_btn d-none d-lg-block">
+                                    <a class="popup-with-form" href="#test-form">Make an Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        <?php endif;?>

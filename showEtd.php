@@ -1,3 +1,4 @@
+
 <style>
  .omar
  {
@@ -14,6 +15,7 @@
  }
 
 
+
 </style>
 <?php
 require 'header.php';
@@ -28,22 +30,19 @@ try {
 } catch (Exception $e) {
     echo $e->getMessage();
 }
-$currentPage=1;
-if(isset($_GET['p']))
-{
-    $currentPage=$_GET['p'];
-}
-else
-{
-    $_GET['p']=1;
+$currentPage = 1;
+if (isset($_GET['p'])) {
+    $currentPage = $_GET['p'];
+} else {
+    $_GET['p'] = 1;
 }
 $reponse = $bdd->query("SELECT COUNT(Adh_num) as nbjeux FROM Adherant  ");
 $donnee = $reponse->fetch();
-$nombreJeux=$donnee['nbjeux'];
-$perPage=4;
-$nbrePage= ceil($nombreJeux/$perPage);
+$nombreJeux = $donnee['nbjeux'];
+$perPage = 4;
+$nbrePage = ceil($nombreJeux / $perPage);
 
-$reponse = $bdd->query("SELECT * FROM Adherant JOIN emprunter ON Adherant.adh_num=emprunter.adh_num JOIN livre ON livre.liv_num=emprunter.liv_num  LIMIT ".(($currentPage-1)*$perPage)." , $perPage");
+$reponse = $bdd->query("SELECT * FROM Adherant JOIN emprunter ON Adherant.adh_num=emprunter.adh_num JOIN livre ON livre.liv_num=emprunter.liv_num  LIMIT " . (($currentPage - 1) * $perPage) . " , $perPage");
 
 ?>
 
@@ -59,19 +58,18 @@ $reponse = $bdd->query("SELECT * FROM Adherant JOIN emprunter ON Adherant.adh_nu
         <h1 class="card-title"><?=$donnee['adh_nom'] . " " . $donnee['adh_prenom']?></h1>
         <p class="card-text"><span class="ref">Identifiant:</span>  <?=$donnee['adh_num']?><br></p>
         <p class="card-text"><span class="ref">Addresse:</span> <?=$donnee['adh_ville']?>, Rue: <?=$donnee['adh_rue']?> BP: <?=$donnee['adh_cp']?><br></p>
-        <p class="card-text"><span class="ref">Telephone:</span>  <?=$donnee['tel'] ?><br></p>
+        <p class="card-text"><span class="ref">Telephone:</span>  <?=$donnee['tel']?><br></p>
         <div class="progress">
 
-            <?php  
+            <?php
 
+    $datetime1 = date_create(date('Y-m-d')); // Date fixe
+    $datetime2 = date_create($donnee['delai']); // Date fixe
+    $interval = date_diff($datetime1, $datetime2);
+    $marge = $interval->format('%R%a jours');
 
-$datetime1 = date_create(date('Y-m-d')); // Date fixe
-$datetime2 = date_create($donnee['delai']); // Date fixe
-$interval = date_diff($datetime1, $datetime2);
-$marge=$interval->format('%R%a jours');
-
-          $del =ceil(($marge/20) *100);
-          if ($del > 0 && $del <= 20) {?>
+    $del = ceil(($marge / 20) * 100);
+    if ($del > 0 && $del <= 20) {?>
 
                 <style>
                .progress-bar
@@ -80,30 +78,35 @@ $marge=$interval->format('%R%a jours');
                }
                 </style>
 
-              <?php }
-              elseif( $del>=20 && $del<=50){  
-              ?>
+              <?php } elseif ($del >= 20 && $del <= 50) {
+        ?>
                <style>
                .progress-bar
                {
                    background: orangered;
                }
                 </style>
-              <?php } 
-              else{?>
+              <?php } else {?>
               <style>
                .progress-bar
                {
                    background: green ;
                }
                 </style>
-                <?php }?>
+                <?php }
+    if ($del < 0):
+        $del = 0;?>
+
+				                <?php endif;?>
             <div class="progress-bar" role="progressbar" aria-valuenow="<?=$del?>"%
             aria-valuemin="0" aria-valuemax="100" style="width:<?=$del?>%">
             <?=$del?>%
             </div>
             </div>
-           
+            <?php if ($del <= 0) {?>
+              <button class="btn btn-danger"> cet ulitisateur doit rendre immediatement ce livre</button>
+          <?php }?>
+
 
       </div>
     </div>
@@ -114,13 +117,13 @@ $marge=$interval->format('%R%a jours');
 
 </div>
 <div class="d-flex justify-content-between my-4">
-<?php if($currentPage>1):?>
- <a href="showEtd.php?p=<?=$currentPage -1?>" class="btn btn-primary"> &laquo; Page Precedente</a>
+<?php if ($currentPage > 1): ?>
+ <a href="showEtd.php?p=<?=$currentPage - 1?>" class="btn btn-primary"> &laquo; Page Precedente</a>
 <?php endif;?>
-<?php if($currentPage<$nbrePage):?>
- <a href="showEtd.php?p=<?=$currentPage +1?>" class="btn btn-primary ml-auto">Page Suivante &raquo;</a>
+<?php if ($currentPage < $nbrePage): ?>
+ <a href="showEtd.php?p=<?=$currentPage + 1?>" class="btn btn-primary ml-auto">Page Suivante &raquo;</a>
 <?php endif;?>
 </div>
- 
+
 
 
